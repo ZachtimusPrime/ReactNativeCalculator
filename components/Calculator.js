@@ -35,7 +35,7 @@ class Calculator extends React.Component {
             /> */}
             <View style={styles.calcWindow}>
                 <Text style={styles.calcText}>
-                    {this.props.total}
+                    {(this.props.total > 0) ? this.props.total : this.props.previousValue }
                 </Text>
             </View>
           </Row>
@@ -72,7 +72,8 @@ class Calculator extends React.Component {
 
 function mapStateToProps(state) {
     return {
-      total: state.total
+      total: state.total,
+      previousValue: state.previousValue
     };
 }
 
