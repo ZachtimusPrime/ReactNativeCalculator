@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { TouchableHighlight, View, Text } from 'react-native';
-import { add, sub, append, clear, calculate } from '../actions/index';
+import { add, subtract, multiply, divide, append, clear, calculate } from '../actions/index';
 import styles from '../styles';
 import _ from 'lodash';
 
@@ -16,7 +16,9 @@ class CalculatorButton extends React.Component {
         console.log("Button " + this.props.content + " clicked.")
         if (this.props.content == "=") { this.props.calculate(); }
         else if (this.props.content == "+") { this.props.add(); }
-        else if (this.props.content == "-") { this.props.sub(); }
+        else if (this.props.content == "-") { this.props.subtract(); }
+        else if (this.props.content == "*") { this.props.multiply(); }
+        else if (this.props.content == "/") { this.props.divide(); }
         else if (this.props.content == "C") { this.props.clear(); }
         else if (_.inRange(Number.parseInt(this.props.content,10),0,10)) {
             this.props.append(this.props.content);
@@ -46,7 +48,9 @@ const mapStateToProps = (state, ownProps) => ({
   
 const mapDispatchToProps = (dispatch, ownProps) => ({
     add: () => dispatch(add()),
-    sub: () => dispatch(sub()),
+    subtract: () => dispatch(subtract()),
+    multiply: () => dispatch(multiply()),
+    divide: () => dispatch(divide()),
     append: (number) => dispatch(append(number)),
     clear: () => dispatch(clear()),
     calculate: () => dispatch(calculate())

@@ -5,6 +5,14 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 import CalculatorButton from './CalculatorButton';
 import styles from '../styles';
 
+function formatInt(number) {
+    if (number % 1 === 0) {
+        return number;
+    } else {
+        return number.toFixed(3);
+    }
+}
+
 class CalculatorColumn extends React.Component {
     render() {
         return (
@@ -35,7 +43,7 @@ class Calculator extends React.Component {
             /> */}
             <View style={styles.calcWindow}>
                 <Text style={styles.calcText}>
-                    {(this.props.total > 0) ? this.props.total : this.props.previousValue }
+                    {(this.props.total > 0) ? formatInt(this.props.total) : ((this.props.previousValue) ? formatInt(this.props.previousValue) : 0) }
                 </Text>
             </View>
           </Row>

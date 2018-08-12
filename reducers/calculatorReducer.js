@@ -29,6 +29,28 @@ const calculator = (state = initialState, action) => {
                 previousValue: previousValue
             }
             return newState;
+        case 'QUEUE_MUL':
+            if (state.previousValue) {
+                state = calculator(state, { type: state.action })
+            }
+            previousValue = state.total;
+            newState = {
+                total: 0,
+                action: "MUL",
+                previousValue: previousValue
+            }
+            return newState;
+        case 'QUEUE_DIV':
+            if (state.previousValue) {
+                state = calculator(state, { type: state.action })
+            }
+            previousValue = state.total;
+            newState = {
+                total: 0,
+                action: "DIV",
+                previousValue: previousValue
+            }
+            return newState;
         case 'APPEND':
             newState = {
                 ...state,
@@ -47,6 +69,20 @@ const calculator = (state = initialState, action) => {
             console.log(state.previousValue);
             newState = {
                 total: state.previousValue - state.total
+            }
+            return newState;
+        case 'MUL':
+            console.log(state.total);
+            console.log(state.previousValue);
+            newState = {
+                total: state.previousValue * state.total
+            }
+            return newState;
+        case 'DIV':
+            console.log(state.total);
+            console.log(state.previousValue);
+            newState = {
+                total: state.previousValue / state.total
             }
             return newState;
         case 'CALCULATE':

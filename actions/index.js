@@ -4,9 +4,21 @@ export const add = () => {
     }
 }
 
-export const sub = () => {
+export const subtract = () => {
     return {
         type: 'QUEUE_SUB'
+    }
+}
+
+export const multiply = () => {
+    return {
+        type: 'QUEUE_MUL'
+    }
+}
+
+export const divide = () => {
+    return {
+        type: 'QUEUE_DIV'
     }
 }
 
