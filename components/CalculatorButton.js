@@ -4,6 +4,7 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 import { StyleSheet, TouchableHighlight, View, Image, Button, Text } from 'react-native';
 import { scale, moderateScale, verticalScale} from './scaling';
 import { add, sub, append, clear } from '../actions/index';
+import styles from '../styles';
 import _ from 'lodash';
 
 class CalculatorButton extends React.Component {
@@ -55,32 +56,3 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(CalculatorButton);
-
-const styles = StyleSheet.create({
-    calcWindow: {
-        flex: 1,
-        alignItems: 'flex-end',
-        justifyContent: 'center'
-    },
-    calcText: {
-        color: 'green',
-        fontSize: moderateScale(52),
-    },
-    calcButtonText: {
-        color: 'black',
-        fontSize: moderateScale(34),
-    },
-    calcRow: {
-      flex: 1,
-    //   borderWidth: 0.25,
-    //   borderColor: '#000',
-    },
-    calcButton: {
-      flex: 1,
-      backgroundColor: '#AAA',
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderWidth: 0.50,
-      borderColor: '#000',
-    }
-});
