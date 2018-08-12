@@ -1,37 +1,9 @@
 import React from 'react';
 import { StyleSheet, TouchableHighlight, View, Image, Button, Text } from 'react-native';
-
 import { connect } from 'react-redux';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { scale, moderateScale, verticalScale} from './scaling';
-
-class CalculatorButton extends React.Component {
-    constructor() {
-        super();
-        this._handlePress = this._handlePress.bind(this);
-    }
-
-    _handlePress() {
-        console.log("Button " + this.props.content + " clicked.")
-        if (this.props.content == "+") {
-            this.props.dispatch({ type: 'ADD'})
-        }
-    }
-
-    render() {
-        return (
-            <Row size={25} style={styles.calcRow}>
-                <TouchableHighlight style={{flex:1}} onPress={this._handlePress}>
-                    <View style={styles.calcButton}>
-                        <Text style={styles.calcButtonText}>
-                            {this.props.content}
-                        </Text>
-                    </View>
-                </TouchableHighlight>
-            </Row>
-        )
-    }
-}
+import CalculatorButton from './CalculatorButton';
 
 class CalculatorColumn extends React.Component {
     render() {
@@ -134,4 +106,7 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(Calculator);
+export default connect(
+    mapStateToProps,
+    null
+)(Calculator);
